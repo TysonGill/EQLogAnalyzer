@@ -6,8 +6,8 @@ Imports Utility
 Module General
 
     ' Server connection and enable
-    Friend ServerEnabled As Boolean = False
-    Friend ConnectionString As String = ""
+    Friend ServerEnabled As Boolean = True
+    Friend ConnectionString As String = "Data Source=tcp:s14.winhost.com;Initial Catalog=DB_130918_bitistry;User ID=DB_130918_bitistry_user;Password=bplease;Integrated Security=False;"
 
     ' Friend declarations
     Friend LogFile As String = ""

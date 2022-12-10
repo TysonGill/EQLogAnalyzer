@@ -6,12 +6,6 @@ ProGridComponent
 </name>
 </assembly>
 <members>
-<member name="T:ProGrid.frmFilter">
- <summary>Used by the ProGrid to enter a numeric filter.</summary>
-</member>
-<member name="T:ProGrid.frmSort">
- <summary>Used by the ProGrid to enter a multicolumn sort.</summary>
-</member>
 <member name="T:ProGrid.My.Resources.Resources">
 <summary>
   A strongly-typed resource class, for looking up localized strings, etc.
@@ -32,6 +26,12 @@ ProGridComponent
 <summary>
   Looks up a localized string similar to &lt;RSAKeyValue&gt;&lt;Modulus&gt;unkMsHp1z9biez0id8OCOuSmlwRJdfGiL+6hxdtfcna98+bdz2rVnhJxpd7KY119Zq9GbNHpcsBZQ9P1PmZdxDoifHsRlfoEXQ2EM5kFo3/qmDVtbnEK9lm12+dfibGZy0Q+p4jWnFVZ++mZbSNsYmGCGfFc08jgwsLSmXqs60M=&lt;/Modulus&gt;&lt;Exponent&gt;AQAB&lt;/Exponent&gt;&lt;/RSAKeyValue&gt;.
 </summary>
+</member>
+<member name="T:ProGrid.frmFilter">
+ <summary>Used by the ProGrid to enter a numeric filter.</summary>
+</member>
+<member name="T:ProGrid.frmSort">
+ <summary>Used by the ProGrid to enter a multicolumn sort.</summary>
 </member>
 <member name="T:ProGrid.ProGrid">
  <summary>The ProGrid Datagrid Component</summary>

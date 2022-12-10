@@ -22,7 +22,6 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.pg = New ProGrid.ProGrid()
         Me.ss = New System.Windows.Forms.StatusStrip()
         Me.ssNonMelee = New System.Windows.Forms.ToolStripStatusLabel()
@@ -61,14 +60,12 @@ Partial Class frmMain
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.lblTop = New System.Windows.Forms.Label()
         Me.lblSearch = New System.Windows.Forms.Label()
-        Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ss.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.splitMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.splitMain.Panel1.SuspendLayout()
         Me.splitMain.Panel2.SuspendLayout()
         Me.splitMain.SuspendLayout()
-        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pg
@@ -221,24 +218,24 @@ Partial Class frmMain
         'mnuUploadParse
         '
         Me.mnuUploadParse.Name = "mnuUploadParse"
-        Me.mnuUploadParse.Size = New System.Drawing.Size(180, 22)
+        Me.mnuUploadParse.Size = New System.Drawing.Size(172, 22)
         Me.mnuUploadParse.Text = "&Upload Parse..."
         '
         'mnuToggleLogging
         '
         Me.mnuToggleLogging.Name = "mnuToggleLogging"
-        Me.mnuToggleLogging.Size = New System.Drawing.Size(180, 22)
+        Me.mnuToggleLogging.Size = New System.Drawing.Size(172, 22)
         Me.mnuToggleLogging.Text = "&Real-time Logging"
         '
         'mnuUpload
         '
         Me.mnuUpload.Name = "mnuUpload"
-        Me.mnuUpload.Size = New System.Drawing.Size(177, 6)
+        Me.mnuUpload.Size = New System.Drawing.Size(169, 6)
         '
         'mnuServerReport
         '
         Me.mnuServerReport.Name = "mnuServerReport"
-        Me.mnuServerReport.Size = New System.Drawing.Size(180, 22)
+        Me.mnuServerReport.Size = New System.Drawing.Size(172, 22)
         Me.mnuServerReport.Text = "Server &Report..."
         '
         'ViewToolStripMenuItem
@@ -425,7 +422,6 @@ Partial Class frmMain
         Me.splitMain.Panel2.PerformLayout()
         CType(Me.splitMain, System.ComponentModel.ISupportInitialize).EndInit()
         Me.splitMain.ResumeLayout(False)
-        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -454,7 +450,6 @@ Partial Class frmMain
     Friend WithEvents ssNonMelee As ToolStripStatusLabel
     Friend WithEvents mnuMerge As ToolStripMenuItem
     Friend WithEvents lblCharts As Label
-    Friend WithEvents BindingSource1 As BindingSource
     Friend WithEvents mnuClearLog As ToolStripMenuItem
     Friend WithEvents ssServerLog As ToolStripStatusLabel
     Friend WithEvents ToolStripMenuItem3 As ToolStripSeparator
