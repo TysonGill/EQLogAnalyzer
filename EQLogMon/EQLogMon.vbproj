@@ -258,6 +258,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EQAnalyzer.ico" />
+    <Content Include="Scripts\EQGetDPS Proc.sql" />
+    <Content Include="Scripts\EQGetEncounters Proc.sql" />
+    <Content Include="Scripts\EQLog Table.sql" />
+    <Content Include="Scripts\EQLogAttack Proc.sql" />
+    <Content Include="Scripts\EQLogDamage Table.sql" />
+    <Content Include="Scripts\EQLoggers Table.sql" />
+    <Content Include="Scripts\EQLogParse Proc.sql" />
+    <Content Include="Scripts\EQPets Table.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
