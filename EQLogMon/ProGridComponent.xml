@@ -1,0 +1,383 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ProGridComponent
+</name>
+</assembly>
+<members>
+<member name="T:ProGrid.frmFilter">
+ <summary>Used by the ProGrid to enter a numeric filter.</summary>
+</member>
+<member name="T:ProGrid.frmSort">
+ <summary>Used by the ProGrid to enter a multicolumn sort.</summary>
+</member>
+<member name="T:ProGrid.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:ProGrid.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:ProGrid.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:ProGrid.My.Resources.Resources.PublicKey">
+<summary>
+  Looks up a localized string similar to &lt;RSAKeyValue&gt;&lt;Modulus&gt;unkMsHp1z9biez0id8OCOuSmlwRJdfGiL+6hxdtfcna98+bdz2rVnhJxpd7KY119Zq9GbNHpcsBZQ9P1PmZdxDoifHsRlfoEXQ2EM5kFo3/qmDVtbnEK9lm12+dfibGZy0Q+p4jWnFVZ++mZbSNsYmGCGfFc08jgwsLSmXqs60M=&lt;/Modulus&gt;&lt;Exponent&gt;AQAB&lt;/Exponent&gt;&lt;/RSAKeyValue&gt;.
+</summary>
+</member>
+<member name="T:ProGrid.ProGrid">
+ <summary>The ProGrid Datagrid Component</summary>
+</member>
+<member name="P:ProGrid.ProGrid.SelectedRecord">
+ <summary>Returns the index of the currently selected record.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.SelectedColumn">
+ <summary>Returns the index of the currently selected column.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.RecordCount">
+ <summary>Returns the current record count.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.ColumnCount">
+ <summary>Returns the current column count.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.Orientation">
+ <summary>Returns the current display orientation (vertical or horizontal).</summary>
+</member>
+<member name="T:ProGrid.ProGrid.ProGridOrienations">
+ <summary>Enumeration of ProGrid orientations.</summary>
+</member>
+<member name="T:ProGrid.ProGrid.ProGridStyleTypes">
+ <summary>Enumeration of ProGrid display styles.</summary>
+</member>
+<member name="T:ProGrid.ProGrid.ProGridSizingMethods">
+ <summary>Enumeration of ProGrid column sizing methods.</summary>
+</member>
+<member name="T:ProGrid.ProGrid.ProGridInvalidMethods">
+ <summary>Enumeration of ProGrid invalid cell handling methods.</summary>
+</member>
+<member name="T:ProGrid.ProGrid.ProGridAlignmentStyles">
+ <summary>Enumeration of ProGrid cell alignment methods.</summary>
+</member>
+<member name="T:ProGrid.ProGrid.ProGridStyle">
+ <summary>A Style specification for a given data column.</summary>
+</member>
+<member name="M:ProGrid.ProGrid.ProGridStyle.#ctor(ProGrid.ProGrid.ProGridStyleTypes,System.Boolean,System.Boolean,System.Int32,System.Object,System.Object,System.Int32,System.Data.DataTable,System.String,System.String,System.String,ProGrid.ProGrid.ProGridSizingMethods,ProGrid.ProGrid.ProGridAlignmentStyles)">
+ <summary>
+ Initializes a new data column Style.
+ </summary>
+ <param name="Style">The ProGridStyleTypes enumeration.</param>
+ <param name="Visible">True if the data column is visible in the ProGrid.</param>
+ <param name="Editable">True if the data column is editable.</param>
+ <param name="DecimalPlaces">For Numeric styles, sets the decimal places to display.</param>
+ <param name="MinValue">For Numeric styles, sets the minimum allowed value.</param>
+ <param name="MaxValue">For Numeric styles, sets the maximum allowed value.</param>
+ <param name="MaxStringLength">For String styles, sets the maximum character count.</param>
+ <param name="Dropdown">For Dropdown styles, provides the selection list in a 1 or 2 column datatable.</param>
+ <param name="FormatString">A custom format string to apply to the column.</param>
+ <param name="OverrideString">Hides cell contents of the data column and displays the specified text.</param>
+ <param name="DataFileExtension">Sets the default file type extension to display contents in an external viewer.</param>
+ <param name="SizingMethod">Sets the ProGridSizingMethods enumeration for initial column sizing.</param>
+ <param name="AlignmentMethod">Sets the ProGridAlignmentMethods enumeration for column text alignment.</param>
+ <remarks></remarks>
+</member>
+<member name="M:ProGrid.ProGrid.StyleSet(System.String,ProGrid.ProGrid.ProGridStyle)">
+ <summary>
+ Sets the display style of a data column.
+ </summary>
+ <param name="ColumnName">The name of the data table column to apply the Style.</param>
+ <param name="Style">A ProGridStyleTypes class specifying the column display style.</param>
+ <remarks>Note that styles conflicting with the underlying data type will be ignored.</remarks>
+</member>
+<member name="M:ProGrid.ProGrid.StyleGet(System.String)">
+ <summary>
+ Returns the display style of a data column.
+ </summary>
+ <param name="ColumnName">The name of the data table column to apply the Style.</param>
+ <returns>A ProGridStyle.</returns>
+ <remarks>Note that incompatible style settings might be overridden.</remarks>
+</member>
+<member name="M:ProGrid.ProGrid.StyleGet(System.Int32)">
+ <summary>
+ Returns the display style of a data column.
+ </summary>
+ <param name="GridCol">The index of the data table column.</param>
+ <returns>A ProGridStyle.</returns>
+</member>
+<member name="M:ProGrid.ProGrid.StyleGet(System.Data.DataColumn)">
+ <summary>
+ Returns the display style of a data column.
+ </summary>
+ <param name="Column">The name of the data table column.</param>
+ <returns>A ProGridStyle.</returns>
+</member>
+<member name="T:ProGrid.ProGrid.ProGridSaveActions">
+ <summary>Enumeration of Add and Delete event statuses.</summary>
+</member>
+<member name="F:ProGrid.ProGrid.ProGridSaveActions.CommitChanges">
+ <summary>Tells the ProGrid to commit the requested Add or Delete.</summary>
+</member>
+<member name="F:ProGrid.ProGrid.ProGridSaveActions.UndoChanges">
+ <summary>Tells the ProGrid to cancel the requested Add or Delete.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.GridTable">
+ <summary>Returns a reference to the table assigned to the grid.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.Version">
+ <summary>Get the component version number.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.PrintTitle">
+ <summary>Sets the default name to appear on printed reports.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.DefaultDateFormat">
+ <summary>Sets the default date format to be used unless overridden by a Style setting.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.CellTextMaxLength">
+ <summary>Sets the maximum length string to display in-cell.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableRefreshButton">
+ <summary>True to enable the Refresh button.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableIdentityHide">
+ <summary>True to hide Identity columns in the grid.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableEditing">
+ <summary>True to enable editing for editable data columns.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableAddButton">
+ <summary>True to enable the Add button.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableDeleteButton">
+ <summary>True to enable the Delete button.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableOptionsButton">
+ <summary>True to enable the Options Menu button.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableOptionsFind">
+ <summary>True to enable the Find items in the Options Menu.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableOptionsSort">
+ <summary>True to enable the Sort item in the Options Menu.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableFiltering">
+ <summary>True to enable the Filter item in the Header context menu.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableOptionsCopy">
+ <summary>True to enable the Copy item in the Options Menu.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableOptionsPrint">
+ <summary>True to enable the Print item in the Options Menu.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableOptionsExport">
+ <summary>True to enable the Export item in the Options Menu.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableEditHighlighting">
+ <summary>True to enable the highlighting of editable cells.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableInvalidCellHandling">
+ <summary>True to enable the marking of out of range cell values.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableFullRowSelection">
+ <summary>True to highlight the entire row in horizontal mode.</summary>
+</member>
+<member name="P:ProGrid.ProGrid.EnableColorAdjustment">
+ <summary>True to enable user color adjustment menu items.</summary>
+</member>
+<member name="M:ProGrid.ProGrid.#ctor">
+ <summary>Initializes a new ProGrid instance.</summary>
+</member>
+<member name="M:ProGrid.ProGrid.GridShow(System.Data.DataTable@,ProGrid.ProGrid.ProGridOrienations)">
+ <summary>
+ Displays a datatable in the ProGrid.
+ </summary>
+ <param name="dtGrid">The data table to display and update.</param>
+ <param name="Orientation">The initial ProGridOrientation.</param>
+ <remarks>Include the schema in your data table if possible so that ProGrid can apply data constraints.</remarks>
+</member>
+<member name="M:ProGrid.ProGrid.Populate">
+ <summary>
+ Update the grid with any changes to the underlying data table
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="E:ProGrid.ProGrid.UserSelectedCell">
+ <summary>Raised when a new cell becomes current.</summary>
+</member>
+<member name="E:ProGrid.ProGrid.UserSelectedRow">
+ <summary>Raised when a new row becomes current.</summary>
+</member>
+<member name="E:ProGrid.ProGrid.UserEditedCell">
+ <summary>Raised when the user completes editing a cell.</summary>
+</member>
+<member name="M:ProGrid.ProGrid.CellEditClose(System.Boolean)">
+ <summary>
+ Force closure of any active editor
+ </summary>
+ <param name="Save">False to discard any pending changes.</param>
+ <remarks></remarks>
+</member>
+<member name="M:ProGrid.ProGrid.CellSelect(System.Int32,System.String)">
+ <summary>
+ Selects a cell, scrolling if necessary to make it visible.
+ </summary>
+ <param name="RowIndex">The row of the cell in the data table.</param>
+ <param name="ColumnName">The column name of the cell in the data table.</param>
+</member>
+<member name="M:ProGrid.ProGrid.CellSelect(System.Int32,System.Int32)">
+ <summary>
+ Selects a cell, scrolling if necessary to make it visible.
+ </summary>
+ <param name="RowIndex">The row of the cell in the data table.</param>
+ <param name="ColIndex">The column of the cell in the data table.</param>
+</member>
+<member name="M:ProGrid.ProGrid.RecordGet(System.Int32)">
+ <summary>
+ Returns a row in the datatable.
+ </summary>
+ <param name="RecordIndex">The zero based row index to retrieve to get.</param>
+ <remarks>Returns the currently selected row if no RecordIndex is provided</remarks>
+</member>
+<member name="M:ProGrid.ProGrid.CellGet(System.String)">
+ <summary>
+ Returns the value of a column in the currently selected row in the datatable.
+ </summary>
+ <param name="ColumnName">The name of the column to get.</param>
+ <returns>The raw value of the underlying data table cell.</returns>
+</member>
+<member name="M:ProGrid.ProGrid.CellGet(System.Int32)">
+ <summary>
+ Returns the value of a column in the currently selected row in the datatable.
+ </summary>
+ <param name="ColIndex">The index of the column to get.</param>
+ <returns>The raw value of the underlying data table cell.</returns>
+</member>
+<member name="M:ProGrid.ProGrid.CellGet(System.Int32,System.String)">
+ <summary>
+ Returns the value of a given row and column in the datatable.
+ </summary>
+ <param name="RowIndex">The zero-based row index in the data table.</param>
+ <param name="ColumnName">The name of the column to get.</param>
+ <returns>The raw value of the underlying data table cell.</returns>
+</member>
+<member name="M:ProGrid.ProGrid.CellGet(System.Int32,System.Int32)">
+ <summary>
+ Returns the value of a given row and column in the datatable.
+ </summary>
+ <param name="RowIndex">The zero-based row index in the data table.</param>
+ <param name="ColIndex">The zero-based column index in the data table.</param>
+ <returns>The raw value of the underlying data table cell.</returns>
+</member>
+<member name="M:ProGrid.ProGrid.CellSet(System.String,System.Object)">
+ <summary>
+ Assigns the value of a column in the current row of the datatable.
+ </summary>
+ <param name="ColumnName">The name of the column to set.</param>
+ <param name="CellValue">The raw value of the underlying data table cell.</param>
+ <remarks>Ignores invalid row and column combinations.</remarks>
+</member>
+<member name="M:ProGrid.ProGrid.CellSet(System.Int32,System.Object)">
+ <summary>
+ Assigns the value of a column in the current row of the datatable.
+ </summary>
+ <param name="ColIndex">The zero-based column index in the data table.</param>
+ <param name="CellValue">The raw value of the underlying data table cell.</param>
+ <remarks>Ignores invalid row and column combinations.</remarks>
+</member>
+<member name="M:ProGrid.ProGrid.CellSet(System.Int32,System.String,System.Object)">
+ <summary>
+ Assigns the value of a given row and column in the datatable.
+ </summary>
+ <param name="RowIndex">The zero-based row index in the data table.</param>
+ <param name="ColumnName">The name of the column to set.</param>
+ <param name="CellValue">The raw value of the underlying data table cell.</param>
+ <remarks>Ignores invalid row and column combinations.</remarks>
+</member>
+<member name="M:ProGrid.ProGrid.CellSet(System.Int32,System.Int32,System.Object)">
+ <summary>
+ Assigns the value of a given row and column in the datatable.
+ </summary>
+ <param name="RowIndex">The zero-based row index in the data table.</param>
+ <param name="ColIndex">The zero-based column index in the data table.</param>
+ <param name="CellValue">The raw value of the underlying data table cell.</param>
+ <remarks>Ignores invalid row and column combinations.</remarks>
+</member>
+<member name="M:ProGrid.ProGrid.ButtonQuickSet(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ Quick configure of all user-defined tool buttons.
+ </summary>
+ <param name="One">The label and tag for button 1.</param>
+ <param name="Two">The label and tag for button 2.</param>
+ <param name="Three">The label and tag for button 3.</param>
+ <param name="Four">The label and tag for button 4.</param>
+ <param name="Five">The label and tag for button 5.</param>
+ <param name="Six">The label and tag for button 6.</param>
+ <param name="Seven">The label and tag for button 7.</param>
+ <param name="Eight">The label and tag for button 8.</param>
+ <remarks>Omitted buttons will be hidden.</remarks>
+</member>
+<member name="M:ProGrid.ProGrid.ButtonSet(System.Int32,System.String,System.String,System.String,System.Boolean)">
+ <summary>
+ Configures a user-defined tool button.
+ </summary>
+ <param name="ButtonNumber">The button number to configure between 1 and 8.</param>
+ <param name="ButtonName">The label to display on the button.</param>
+ <param name="ToolTip">The tooltip associated with the button.</param>
+ <param name="ButtonTag">The tag for the button that is passed to the button clicked event.</param>
+ <param name="Enabled">True to enable the button.</param>
+</member>
+<member name="E:ProGrid.ProGrid.UserClickedButton">
+ <summary>Raised when the user clicks on a User-Defined Toolbutton.</summary>
+</member>
+<member name="E:ProGrid.ProGrid.UserClickedRefresh">
+ <summary>Raised when the user clicks on the Refresh button.</summary>
+</member>
+<member name="E:ProGrid.ProGrid.UserClickedAdd">
+ <summary>Raised when the user clicks on the record Add button.</summary>
+</member>
+<member name="E:ProGrid.ProGrid.UserClickedDelete">
+ <summary>Raised when the user clicks on the record Delete button.</summary>
+</member>
+<member name="E:ProGrid.ProGrid.UserDoubleClicked">
+ <summary>Raised when the user double-clicks on a cell.</summary>
+</member>
+<member name="M:ProGrid.ProGrid.GridSort(System.String,ProGrid.ProGrid.ProGridSortDirection)">
+ <summary>
+ Sort on a column.
+ </summary>
+ <param name="ColumnName">The column name to sort on.</param>
+ <param name="Direction">True if ascending, False for descending.</param>
+</member>
+<member name="M:ProGrid.ProGrid.GridSort(System.Int32,ProGrid.ProGrid.ProGridSortDirection)">
+ <summary>
+ Sort on a column.
+ </summary>
+ <param name="ColumnIndex">The zero-based column index to sort on.</param>
+ <param name="Direction">True if ascending, False for descending.</param>
+</member>
+<member name="M:ProGrid.ProGrid.GridPrint(System.String)">
+ <summary>Print the data as currently displayed in the ProGrid.</summary>
+ <param name="Title">Title to appear on the report.</param>
+ <remarks>Goes to current default printer.</remarks>
+</member>
+<member name="M:ProGrid.ProGrid.GridClear">
+ <summary>Clears and reinitializes the current grid.</summary>
+</member>
+<member name="M:ProGrid.ProGrid.StyleClear(System.String)">
+ <summary>
+ Clear (delete) one or all styles from ProGridStyles.
+ </summary>
+ <param name="StyleName">The style name to delete.</param>
+ <remarks>Leave StyleName empty to clear all styles.</remarks>
+</member>
+<member name="P:ProGrid.ProGrid.LicenseFolder">
+ <summary>Set the path to the folder with the user's license file.</summary>
+</member>
+</members>
+</doc>

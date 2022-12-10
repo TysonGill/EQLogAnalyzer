@@ -1,0 +1,1028 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Utility
+</name>
+</assembly>
+<members>
+<member name="T:Utility.frmErrorReport">
+	<summary>Display a common form for reporting unanticipated errors.</summary>
+</member><member name="M:Utility.clsMedia.MediaPlay(System.String)">
+	<summary>Play a media file</summary>
+	<param name="MediaPath">The complete path of the media file to play.</param>
+	<returns>A string if an error is encountered, otherwise an empty string.</returns>
+</member><member name="M:Utility.clsMedia.MediaRecordStart">
+	<summary>Start recording a media file</summary>
+	<returns>A string if an error is encountered, otherwise an empty string.</returns>
+</member><member name="M:Utility.clsMedia.MediaRecordStop(System.String)">
+	<summary>Record a media file</summary>
+	<param name="MediaPath">The complete path of the media file to create.</param>
+	<returns>A string if an error is encountered, otherwise an empty string.</returns>
+</member><member name="M:Utility.clsMedia.MediaPause">
+	<summary>Pause playback of the current file.</summary>
+</member><member name="M:Utility.clsMedia.MediaResume">
+	<summary>Resume playback of the current file.</summary>
+</member><member name="M:Utility.clsMedia.MediaStop">
+	<summary>Stop playback of the current file.</summary>
+</member><member name="M:Utility.clsMedia.IsPlaying">
+	<summary>Check if a current file is open (playing or paused).</summary>
+</member><member name="T:Utility.clsMedia">
+	<summary>General library for MCI Multimedia routines.</summary>
+</member><member name="F:Utility.clsSQLParser.tblParsed">
+	<summary>The parsed query portions.</summary>
+</member><member name="F:Utility.clsSQLParser.WhereClause">
+	<summary>The where clause of the query.</summary>
+</member><member name="F:Utility.clsSQLParser.SortClause">
+	<summary>The sort clause of the query.</summary>
+</member><member name="M:Utility.clsSQLParser.#ctor(System.String)">
+	<summary>Instantiate a SQLParser instance and optionally parse a SQL string.</summary>
+	<param name="sql">The SQL query to parse.</param>
+	<remarks>Should be a SELECT query.</remarks>
+</member><member name="M:Utility.clsSQLParser.Parse(System.String)">
+	<summary>Parse a SQL SELECT query.</summary>
+	<param name="sql">The SQL SELECT query to parse.</param>
+</member><member name="M:Utility.clsSQLParser.AssignValues(System.Data.DataTable,System.Int32)">
+	<summary>Assign a set of query parameters from a table row.</summary>
+	<param name="dt">The source table.</param>
+	<param name="RowNumber">The row number to insert.</param>
+</member><member name="M:Utility.clsSQLParser.ClearValues">
+	<summary>Clear all assigned values.</summary>
+</member><member name="M:Utility.clsSQLParser.GetInsert(System.String)">
+	<summary>Get an INSERT version of the query.</summary>
+</member><member name="M:Utility.clsSQLParser.GetUpdate(System.String)">
+	<summary>Get an UPDATE version of the query.</summary>
+</member><member name="M:Utility.clsSQLParser.GetTables(System.String)">
+	<summary>Get all tables references by a query.</summary>
+	<param name="sql">The query to parse.</param>
+	<returns>A table of table names.</returns>
+</member><member name="T:Utility.clsSQLParser">
+	<summary>Parses and reformats SQL queries.</summary>
+	<remarks>Supprts TSQL queries only.</remarks>
+</member><member name="T:Utility.frmListSelector">
+	<summary>A general use form to select an item from a list.</summary>
+	<remarks> Use ui.SelectFromList to display.</remarks>
+</member><member name="M:Utility.clsDatabase.SortDataTable(System.Data.DataTable,System.String)">
+	<summary>Sorts a datatable.</summary>
+	<param name="dt">The datatable to sort.</param>
+	<param name="SortString">The sort string.</param>
+	<returns>A sorted datatable.</returns>
+	<remarks>Sort string should be in standard SQL format like "[Member ID], [Group Number] DESC"</remarks>
+</member><member name="M:Utility.clsDatabase.GetRecordCount(System.Data.DataTable)">
+	<summary>Safely returns a datatable record count.</summary>
+	<param name="dt">The datatable to check.</param>
+	<returns>A numeric record count.</returns>
+	<remarks>Safely returns a record count even if the datatable is Nothing.</remarks>
+</member><member name="M:Utility.clsDatabase.GetDistinctString(System.Data.DataTable,System.String,System.Boolean)">
+	<summary>Return a delimited string for all unique values in a column.</summary>
+	<param name="dt">The DataTable to search for disinct entries.</param>
+	<param name="ColName">The name of the column to search for distinct entries.</param>
+	<returns>A delimited string of column values.</returns>
+</member><member name="M:Utility.clsDatabase.GetDistinct(System.Data.DataTable,System.String)">
+	<summary>Return collection of distinct members of a datatable column.</summary>
+	<param name="dt">The DataTable to search for disinct entries.</param>
+	<param name="ColName">The name of the column to search for distinct entries.</param>
+	<returns>A collection of distinct column values.</returns>
+</member><member name="M:Utility.clsDatabase.GetRowValue(System.Data.DataTable,System.String,System.String)">
+	<summary>Search a datatable for a row and return a column value.</summary>
+	<param name="dt">The datatable to saerch.</param>
+	<param name="criteria">The search criteria, e.g. "ColumnName = 'Test'.</param>
+	<param name="ReturnedColumn">The column name from which to return data.</param>
+	<returns>Value of the field.</returns>
+	<remarks>Returns Nothing if more than one row is returned from search.</remarks>
+</member><member name="M:Utility.clsDatabase.DataTableExport(System.Data.DataTable,System.String,System.Boolean,System.String,System.Boolean,System.Boolean)">
+	<summary>Writes a DataTable into a CSV file.</summary>
+	<param name="dt">The DataTable to export.</param>
+	<param name="FullPath">The fully specified path and name of the file to export.</param>
+	<param name="IncludeHeader">Set True to include a header.</param>
+	<param name="Append">Set to True if you wish to append an existing file.</param>
+</member><member name="M:Utility.clsDatabase.DataTableExportOLEDB(System.Data.DataTable,System.String,System.Boolean)">
+	<summary>Writes a DataTable into a text file using the OLEDB driver.</summary>
+	<param name="dt">The DataTable to export.</param>
+	<param name="FullPath">The fully specified path and name of the file to export.</param>
+	<param name="IncludeHeader">Set True if the file should include a header.</param>
+	<remarks>
+ This routine uses the OLEDB text reader to import any text file.
+ By default it will attempt to assign the column types for a comma delimited file.
+ If you have any other type of file, you can specify the file format in a Schema.ini file
+ in the same folder as the file to be imported. This will handle any type of delimiter or fixed-width files.
+ See http://msdn2.microsoft.com/en-us/library/ms709353.aspx for a description of the schema file format.
+ </remarks>
+</member><member name="M:Utility.clsDatabase.TextImportOLDEB(System.String,System.Boolean)">
+	<summary>Reads a text file into a DataTable using the OLEDB driver.</summary>
+	<param name="FullPath">The fully specified path and name of the file to import.</param>
+	<param name="HasHeader">Set True if the file includes a header.</param>
+	<returns>A DataTable.</returns>
+	<remarks>
+ This routine uses the OLEDB text reader to import any text file.
+ By default it will attempt to assign the column types for a comma delimited file.
+ If you have any other type of file, you can specify the file format in a Schema.ini file
+ in the same folder as the file to be imported. This will handle any type of delimiter or fixed-width files.
+ See http://msdn2.microsoft.com/en-us/library/ms709353.aspx for a description of the schema file format.
+ </remarks>
+</member><member name="M:Utility.clsDatabase.TextImportDelimitedString(System.String,System.Boolean,System.String,System.Boolean)">
+	<summary>Reads a delimited string into a DataTable.</summary>
+	<param name="FileContents">The delimited file contents as a text string.</param>
+	<param name="HasHeader">Set True if the file includes a header.</param>
+	<returns>A DataTable.</returns>
+</member><member name="M:Utility.clsDatabase.TextImportDelimited(System.String,System.Boolean,System.String,System.Boolean)">
+	<summary>Reads a delimited text file into a DataTable.</summary>
+	<param name="FullPath">The fully specified path and name of the file to import.</param>
+	<param name="HasHeader">Set True if the file includes a header.</param>
+	<returns>A DataTable.</returns>
+</member><member name="M:Utility.clsDatabase.ExcelImport(System.String,System.String,System.Boolean)">
+	<summary>Reads an Excel worksheet into a DataTable.</summary>
+	<param name="FullPath">The fully specified path and name of the Excel file to import.</param>
+	<param name="SheetName">The name of the worksheet to import.</param>
+	<returns>A DataTable.</returns>
+	<remarks>Supports Excel 8.0 (Excel 97 and above)</remarks>
+</member><member name="M:Utility.clsDatabase.GetExcelSchema(System.String)">
+	<summary>Reads the schema of an Excel spreadsheet into a DataTable.</summary>
+	<param name="FullPath">The fully specified path and name of the Excel file to read.</param>
+	<returns>A DataTable containing the spreadsheet schema.</returns>
+</member><member name="M:Utility.clsDatabase.XmlFromDatatable(System.Data.DataTable)">
+	<summary>Returns an XML string of a dataset.</summary>
+	<param name="dt">The dataset to convert.</param>
+	<returns>An XML string in standard recordset format.</returns>
+</member><member name="M:Utility.clsDatabase.XmlToDatatable(System.String)">
+	<summary>Converts an XML string to a dataset.</summary>
+	<param name="sXML">The standard recordset format XML string to convert.</param>
+	<returns>A dataset.</returns>
+</member><member name="T:Utility.clsDatabase">
+	<summary>General library for database routines.</summary>
+	<remarks>Use clsDataQuery for your database access library.</remarks>
+</member><member name="M:Utility.clsNetworking.HostNameGet">
+	<summary>Returns the DNS name of the host machine.</summary>
+</member><member name="M:Utility.clsNetworking.HostAddressGet">
+	<summary>Returns the IP Address for the most machine.</summary>
+</member><member name="M:Utility.clsNetworking.GetUser">
+	<summary>Returns the user name for the current windows login.</summary>
+	<returns>The user name.</returns>
+	<remarks>Requires that application be configured to use Windows Authentication and also a connection to the HR database called HRCon in the Connections collection.</remarks>
+</member><member name="M:Utility.clsNetworking.GetUserInfo(Utility.clsDataQuery,System.String)">
+	<summary>Returns detailed user information.</summary>
+	<param name="dqHR">A DataQuery object pointing to the HR database.</param>
+	<param name="UserName">The windows system name or the current user if omitted.</param>
+	<returns>A datatable of user information.</returns>
+	<remarks>
+ Requires that application be configured to use Windows Authentication. 
+ Note that multiple records can be returned if the person has multiple phone numbers.
+ </remarks>
+</member><member name="M:Utility.clsNetworking.ToUncPath(System.String)">
+	<summary>Converts a local (mapped) path to a UNC path.</summary>
+	<param name="LocalPath">The local path to convert, must start with drive letter followed by a colon.</param>
+	<returns>The UNC path.</returns>
+	<remarks>It will return the original path if the conversion cannot be performed.</remarks>
+</member><member name="M:Utility.clsNetworking.IsURL(System.String)">
+	<summary>Check if a path point to a file or a URL.</summary>
+	<param name="Path">The URL or file path.</param>
+	<returns>Returns True if Path is a URL.</returns>
+</member><member name="M:Utility.clsNetworking.GetImage(System.String)">
+	<summary>Returns an image pointed to by a URL or File Path.</summary>
+	<param name="Path">The URL or file path to the image.</param>
+	<returns>The Image.</returns>
+</member><member name="M:Utility.clsNetworking.GetWebImage(System.String)">
+	<summary>Returns an image pointed to by a URL.</summary>
+	<param name="ImageURL">The URL to the image on the web.</param>
+	<returns>The Image.</returns>
+</member><member name="M:Utility.clsNetworking.GetFileImage(System.String)">
+	<summary>Returns an image pointed to by a file path.</summary>
+	<param name="ImagePath">The path the file image file.</param>
+	<returns>The Image.</returns>
+</member><member name="M:Utility.clsNetworking.GetOldestFile(System.String)">
+	<summary>Returns the oldest file in a specified file path.</summary>
+	<param name="FilePath">The path to search.</param>
+	<returns>The file name.</returns>
+</member><member name="M:Utility.clsNetworking.GetNewestFile(System.String)">
+	<summary>Returns the newest file in a specified file path.</summary>
+	<param name="FilePath">The path to search.</param>
+	<returns>The file name.</returns>
+</member><member name="M:Utility.clsNetworking.AppendText(System.String,System.String,System.Int32)">
+	<summary>AppendAllText with retry to avoid locking issues.</summary>
+	<param name="FileName">The file name to append.</param>
+	<param name="Text">The text to append.</param>
+	<param name="TimeOutSecs">Optional timeout in seconds.</param>
+	<remarks>Will raise an error if unsuccessful.</remarks>
+</member><member name="T:Utility.clsNetworking.DeleteMode">
+	<summary>Enumerates the Modes for the DirectoryDelete method.</summary>
+</member><member name="M:Utility.clsNetworking.DirectoryDelete(System.String,Utility.clsNetworking.DeleteMode)">
+	<summary>
+ Recursively delete all files in a folder
+ </summary>
+	<param name="TopFolder">The file path to delete</param>
+	<param name="Mode">Specifies whether to delete the folder entirely or clean up contents only</param>
+	<remarks>Overrides any readonly permission settings</remarks>
+</member><member name="M:Utility.clsNetworking.CaptureScreen">
+	<summary>Gets a screen shot.</summary>
+	<returns>An image of the current screen.</returns>
+</member><member name="M:Utility.clsNetworking.CaptureForm(System.Windows.Forms.Form)">
+	<summary>Gets a screen shot of an application form.</summary>
+	<param name="frm">The form to capture.</param>
+	<returns>An image of the form.</returns>
+</member><member name="M:Utility.clsNetworking.MailSend(System.String,System.String,System.String,System.String[],System.String,System.Boolean)">
+	<summary>Send an email message using from the local system.</summary>
+	<param name="SendTo">Mail destination address.</param>
+	<param name="Subject">The subject line of the email message.</param>
+	<param name="Body">HTML Body of the email message.</param>
+	<param name="Attachments">Optional array of attachment file network path specifications.</param>
+	<param name="SendAs">Optional sender address.</param>
+</member><member name="M:Utility.clsNetworking.MailError(System.String,System.String,System.String,System.Boolean)">
+	<summary>Send an email report of an error.</summary>
+	<param name="SendTo">Mail destination address.</param>
+	<param name="Subject">The subject line of the email message.</param>
+	<param name="HTMLBody">HTML Body of the email message.</param>
+	<param name="Screenshot">True to include a screenshot.</param>
+</member><member name="M:Utility.clsNetworking.EmailValidate(System.String,System.Boolean)">
+	<summary>Validates an email address</summary>
+	<param name="EmailAddress">The email address to validate</param>
+	<param name="TryConnect">False to check format only, True to attempt to get an SMTP response.</param>
+	<returns>An empty string on success or an error string describing the failure.</returns>
+</member><member name="E:Utility.clsNetworking.InteractiveListener.InteractiveReceived">
+	<summary>Raised when a message is received from the call handling system.</summary>
+	<param name="dt">The datatable containing information received from the Interactive system.</param>
+</member><member name="F:Utility.clsNetworking.InteractiveListener.IsListening">
+	<summary>Set to True to monitor Interactive calls raise InteractiveReceived events.</summary>
+</member><member name="M:Utility.clsNetworking.InteractiveListener.#ctor(System.Int32)">
+	<summary>Instantiate a new Interactive listener.</summary>
+	<param name="ListeningPort"></param>
+</member><member name="T:Utility.clsNetworking.InteractiveListener">
+	<summary>Listens for messages from the Interactive call handling system.</summary>
+	<remarks>Use WithEvents when you declare an InteractiveListener and handle the InteractiveReceived event.</remarks>
+	<example>
+ Private WithEvents Interactive As New clsNetworking.InteractiveListener
+ Interactive.IsListening = True
+ </example>
+</member><member name="M:Utility.clsNetworking.GetUserProperty(System.String,System.String,System.String)">
+	<summary>Get a property for a particular user</summary>
+	<param name="PropertyName">Property name to return</param>
+	<param name="UserName">Optional username, defaults to current.</param>
+	<param name="path">Optional LDAP path. Defaults to current.</param>
+	<remarks>Returns only the first value of PropertyName</remarks>
+	<returns>The first property value</returns>
+</member><member name="M:Utility.clsNetworking.IsPrinterInstalled(System.String)">
+	<summary>Checks if a named printer is installed.</summary>
+	<param name="PrinterName">The name of the printer to check.</param>
+	<return>True if printer is installed.</return>
+</member><member name="M:Utility.clsNetworking.GetPrinters">
+	<summary>Returns a datatable of installed printers.</summary>
+	<return>Datatable of printer names.</return>
+</member><member name="M:Utility.clsNetworking.PrintText(System.String,System.String,System.Boolean)">
+	<summary>Sends a text document to the printer.</summary>
+	<param name="Text">The text document to print.</param>
+	<param name="PrinterName">The name of the printer. Default is default printer.</param>
+	<param name="Landscape">Set to True to print landscape.</param>
+</member><member name="M:Utility.clsNetworking.PrintFile(System.String,System.String)">
+	<summary>Sends a file to a printer.</summary>
+	<param name="FileName">The file name to print.</param>
+	<param name="PrinterName">Optional name of the printer to send the document to. If no PrinterName is provided it is sent to the default printer.</param>
+	<remarks>
+ To fax, you can simply print to \\sv-hfi-rfax\HPFAX (assuming that is your networked fax printer)
+ In your fax, you can embed fax commands for automatic faxing (substitute angle brackets for [])
+ [COVER][ToName:Tyson Gill][ToFaxNum:912128095066][Note:Transportation Request]
+ Note that you must put this embedded XML in the System font in order for RightFax to recognize it.
+ </remarks>
+</member><member name="M:Utility.clsNetworking.FTPGet(System.String,System.String,System.String,System.String)">
+	<summary>Retrieves an ftp file.</summary>
+	<param name="FTPAddress">The full ftp address of the file to retrieve.</param>
+	<param name="UserName">The username, or empty if anonymous.</param>
+	<param name="Password">The password, or empty if none is needed.</param>
+	<param name="LocalFile">The local file to create, or empty if none is needed.</param>
+	<returns>The retrieved file.</returns>
+</member><member name="M:Utility.clsNetworking.FTPPut(System.String,System.String,System.String,System.String)">
+	<summary>Sends an ftp file.</summary>
+	<param name="FTPAddress">The full ftp address of the file to create.</param>
+	<param name="LocalFile">The local file to send.</param>
+	<param name="UserName">The username, or empty if anonymous.</param>
+	<param name="Password">The password, or empty if none is needed.</param>
+	<returns>The retrieved file.</returns>
+</member><member name="M:Utility.clsNetworking.GetRegValue(Microsoft.Win32.RegistryHive,System.String,System.String)">
+	<summary>Retrieves a registry value.</summary>
+	<param name="Hive">The registry hive to search.</param>
+	<param name="Key">The registry key to search.</param>
+	<param name="ValueName">The registry value to retrieve.</param>
+	<returns>The retrieved value.</returns>
+</member><member name="M:Utility.clsNetworking.TCPSend(System.String,System.String,System.String)">
+	<summary>Submits a packet to a host server and returns a the response.</summary>
+	<param name="IP">The IP Address to connect to.</param>
+	<param name="Port">The IP Port to connect to.</param>
+	<param name="Request">The packet to send.</param>
+</member><member name="M:Utility.clsNetworking.IconFromFile(System.String,System.Boolean)">
+	<summary>Return the icon associated with a file.</summary>
+	<param name="FileName">The file name to extract.</param>
+	<returns>The icon associated wtih the file.</returns>
+	<remarks>Works with file links.</remarks>
+</member><member name="M:Utility.clsNetworking.IconExtract(System.String)">
+	<summary>Return the icon associated with a file.</summary>
+	<param name="FileName">The file name to extract.</param>
+	<returns>The image associated wtih the file.</returns>
+	<remarks>IconFromFile is more general and works with file links.</remarks>
+</member><member name="F:Utility.clsNetworking.MapDrive.DriveMapped">
+	<summary>Set to true if the drive has been sucessfully mapped</summary>
+</member><member name="M:Utility.clsNetworking.MapDrive.#ctor(System.String,System.String,System.String,System.String)">
+	<summary>
+ Creates a new MapDrive object and creates the system drive mapping
+ </summary>
+	<param name="NetPath">The network path to map.</param>
+	<param name="UserName">The username to access the path.</param>
+	<param name="Password">The password to access the path.</param>
+	<param name="DriveName">The optional local drive to create, e.g. "z:"</param>
+	<remarks>This creates a permanent system drive mapping unless the Remove method is called.</remarks>
+</member><member name="M:Utility.clsNetworking.MapDrive.Remove">
+	<summary>Removes a mapped drive.</summary>
+	<remarks>If not called before the object is destroyed the drive will remain mapped.</remarks>
+</member><member name="T:Utility.clsNetworking.MapDrive">
+	<summary>
+ Maps a network drive and assigns permission to a user account
+ </summary>
+</member><member name="M:Utility.clsNetworking.Impersonator.ImpersonateStart(System.String,System.String,System.String)">
+	<summary>
+ Impersonate another windows account
+ </summary>
+	<param name="Domain">The domain on which the user account resides</param>
+	<param name="userName">The name of the user account</param>
+	<param name="Password">The password for the user account</param>
+	<returns>An errorstring, empty if there is no error.</returns>
+	<remarks>Impersonation will remain active until ImpersonateStop is called or the application ends.</remarks>
+</member><member name="M:Utility.clsNetworking.Impersonator.ImpersonateStop">
+	<summary>
+ End the current impersonation and return to the default user
+ </summary>
+</member><member name="M:Utility.clsNetworking.Impersonator.GetCurrentUser">
+	<summary>
+ Get the currently impersonated user.
+ </summary>
+</member><member name="T:Utility.clsNetworking.Impersonator">
+	<summary>A class to allow the application to impersonate another user.</summary>
+	<remarks>The local policy has to allow users to 'Act As Part of the Operating System.</remarks>
+</member><member name="M:Utility.clsNetworking.DynamicFunction(System.String)">
+	<summary>
+ Dynamically compile and execute a function
+ </summary>
+	<param name="VBCode">The code to be executed, including the Return statement</param>
+	<returns>An object with the function results, or Nothing if there is an error</returns>
+	<remarks>Sample VBCode: Return (12+5)*9</remarks>
+</member><member name="T:Utility.clsNetworking">
+	<summary>General library for networking routines.</summary>
+</member><member name="F:Utility.clsEligibility.dtRequest">
+	<summary>The request parameters should be stored here prior to calling GetEligibility().</summary>
+</member><member name="M:Utility.clsEligibility.#ctor">
+	<summary>Instantiate the class instance.</summary>
+</member><member name="M:Utility.clsEligibility.ClearRequest">
+	<summary>Clears request parameters but retains provider settings.</summary>
+</member><member name="M:Utility.clsEligibility.GetEligibility">
+	<summary>Checks Medicare eligibility with the state.</summary>
+	<returns>A DataTable with the member eligibility results.</returns>
+</member><member name="T:Utility.clsEligibility">
+	<summary>Submit Medicaid eligibility requests and parse results.</summary>
+</member><member name="F:Utility.clsRescDiag.SampleSize">
+	<summary>The sample size for averaging resource levels.</summary>
+</member><member name="F:Utility.clsRescDiag.SamplingRate">
+	<summary>The delete in milliseconds between resource sample measurements.</summary>
+</member><member name="F:Utility.clsRescDiag.Log">
+	<summary>The sample log.</summary>
+</member><member name="M:Utility.clsRescDiag.#ctor">
+	<summary>Instantiate a new SysResources class.</summary>
+	<remarks>Initiates the CPU sampling background process</remarks>
+</member><member name="M:Utility.clsRescDiag.GetAvailableCPUPercent">
+	<summary>Get the available system CPU.</summary>
+	<returns>Available CPU as a percent</returns>
+	<remarks>If called immediately after instantiating class, will delay for sampling.</remarks>
+</member><member name="M:Utility.clsRescDiag.GetAvailableMemoryMB">
+	<summary>Get the available system memory.</summary>
+	<returns>Available system memory in MB</returns>
+</member><member name="M:Utility.clsRescDiag.GetTotalMemoryMB">
+	<summary>Get the total system memory.</summary>
+	<returns>Available system memory in MB</returns>
+</member><member name="M:Utility.clsRescDiag.GetAvailableMemoryPercent">
+	<summary>Get the available system memory.</summary>
+	<returns>Available system memory as a percent of total</returns>
+</member><member name="M:Utility.clsRescDiag.GetMemoryUsedByMeKB">
+	<summary>Get the memory used by this process.</summary>
+	<returns>Memory used in KB</returns>
+</member><member name="M:Utility.clsRescDiag.WaitForResources(System.Single,System.Int32,System.Single)">
+	<summary>Blocks the calling application until minimum system resources are available.</summary>
+	<param name="MinimumAvailableCPUPercent">The minimum CPU required.</param>
+	<param name="MinimumAvailableMemoryMB">The minimum memory required.</param>
+	<param name="MaximumWaitSeconds">The maximum time to wait in seconds.</param>
+	<returns>True if resources were reached or False if it timed out.</returns>
+</member><member name="M:Utility.clsRescDiag.LogBegin(System.Boolean)">
+	<summary>Begin logging.</summary>
+	<param name="ContinuePrevious">True to continue previous logging session</param>
+	<remarks>Log results are stored in the Log datatable</remarks>
+</member><member name="M:Utility.clsRescDiag.LogHalt">
+	<summary>Halt logging.</summary>
+	<returns>The elapsed time since first begun in MS</returns>
+	<remarks>Log results are stored in the Log datatable</remarks>
+</member><member name="T:Utility.clsRescDiag">
+	<summary>Class for reporting program resource utilization.</summary>
+</member><member name="E:Utility.clsFolderWatcher.FileChanged">
+	<summary>Raised when a file in the watch folder has been modified.</summary>
+	<param name="FileName">Name of the file that has changed.</param>
+	<param name="Change">The change type, or the new file name.</param>
+	<remarks>Use WithEvents when you declare clsFolderWatcher and handle this event.</remarks>
+	<example>
+ Private WithEvents clsFolderWatcher As New clsFolderWatcher("c:\")
+ </example>
+</member><member name="M:Utility.clsFolderWatcher.#ctor(System.String,System.Boolean)">
+	<summary>Instantiate the class instance.</summary>
+</member><member name="P:Utility.clsFolderWatcher.Folder">
+	<summary>The folder to monitor.</summary>
+</member><member name="P:Utility.clsFolderWatcher.Enabled">
+	<summary>True to raise an event when a file changes.</summary>
+</member><member name="M:Utility.clsFolderWatcher.GetFileTable">
+	<summary>Returns a listing of files in the folder.</summary>
+	<returns>A DataTable with the File Name and Updated Date.</returns>
+</member><member name="T:Utility.clsFolderWatcher">
+	<summary>Watches a folder and raises an event when a file chanegs.</summary>
+</member><member name="M:Utility.clsFormatting.q(System.Object)">
+	<summary>Prepare a variable for inclusion in a SQL string.</summary>
+	<param name="Fld">Text to prepare.</param>
+	<remarks>Use for formatting variables in SQL statements. This also filters against SQL injection attacks.</remarks>
+	<example>sql = "SELECT * FROM MyTable WHERE ID = " + fmt.q(sID)</example>
+	<returns>A string formatted for inclusion in a SQL query.</returns>
+</member><member name="M:Utility.clsFormatting.EmailName(System.String)">
+	<summary>Parse the name from an email address.</summary>
+	<param name="EmailAddress">A valid email address.</param>
+	<returns>The name part of the address.</returns>
+</member><member name="M:Utility.clsFormatting.GetAge(System.DateTime)">
+	<summary>Get the age of a person.</summary>
+	<param name="BirthDate">The birthdate of the person.</param>
+	<returns>The age in years.</returns>
+</member><member name="M:Utility.clsFormatting.GetFirstDayInMonth(System.DateTime)">
+	<summary>Get the date of the first day in a month.</summary>
+	<param name="dtDate">Any date in the month to return.</param>
+	<returns>The date of the first day of the month.</returns>
+</member><member name="M:Utility.clsFormatting.GetLastDayInMonth(System.DateTime)">
+	<summary>Get the date of the last day in a month.</summary>
+	<param name="dtDate">Any date in the month to return.</param>
+	<returns>The date of the last day of the month.</returns>
+</member><member name="M:Utility.clsFormatting.GetStartOfDay(System.DateTime)">
+	<summary>Set the time for a date to the start of day.</summary>
+	<param name="dtDate">Any date for which to set the time.</param>
+	<returns>The same date at 12:00 am.</returns>
+</member><member name="M:Utility.clsFormatting.GetEndOfDay(System.DateTime)">
+	<summary>Set the time for a date to the end of day.</summary>
+	<param name="dtDate">Any date for which to set the time.</param>
+	<returns>The same date at 11:59 pm.</returns>
+</member><member name="M:Utility.clsFormatting.GetTextBetween(System.String,System.String,System.String)">
+	<summary>Get the text in a string between two fragments.</summary>
+	<param name="Full">The string to parse.</param>
+	<param name="FromPart">The start fragment.</param>
+	<param name="ToPart">The end fragment.</param>
+	<returns>Inner string.</returns>
+</member><member name="M:Utility.clsFormatting.ReplacePairs(System.String,System.String,System.String,System.String,System.String)">
+	<summary>Replace delimiter pairs.</summary>
+	<param name="Full">The string to parse.</param>
+	<param name="SearchLeft">The left delimiter to be replaced.</param>
+	<param name="SearchRight">The right delimiter to be replaced.</param>
+	<param name="RepLeft">The left delimiter to replace with.</param>
+	<param name="RepRight">The right delimiter to replace with.</param>
+	<returns>Modified string.</returns>
+</member><member name="M:Utility.clsFormatting.ToBoolean(System.Object)">
+	<summary>Safely returns a boolean from a bit field.</summary>
+	<param name="BitField">Bit field to convert.</param>
+	<returns>A valid boolean.</returns>
+</member><member name="M:Utility.clsFormatting.ToStr(System.Object)">
+	<summary>Safely returns a string even if str is Nothing.</summary>
+	<param name="str">str to prepare.</param>
+	<returns>A valid string.</returns>
+</member><member name="M:Utility.clsFormatting.ToURL(System.String)">
+	<summary>Prepare a URL string.</summary>
+	<param name="URL">URL to prepare.</param>
+	<remarks>Use to encode special characters for URL.</remarks>
+	<returns>A valid URL.</returns>
+</member><member name="M:Utility.clsFormatting.ToXML(System.String)">
+	<summary>Prepare an XML string.</summary>
+	<param name="XML">XML string to prepare.</param>
+	<remarks>Use to encode special characters for XML.</remarks>
+	<returns>A valid XML string.</returns>
+</member><member name="M:Utility.clsFormatting.FromXML(System.String)">
+	<summary>Decode an XML string.</summary>
+	<param name="XML">XML string to decode.</param>
+	<remarks>Use to decode special characters in XML.</remarks>
+	<returns>A valid text string.</returns>
+</member><member name="M:Utility.clsFormatting.FromMhsDate(System.Object)">
+	<summary>Convert an MHS date to standard format.</summary>
+	<param name="MHSDate">Date to convert.</param>
+	<returns>Formatted date.</returns>
+</member><member name="M:Utility.clsFormatting.ToSSN(System.String)">
+	<summary>Convert a SSN to standard format.</summary>
+	<param name="SSN">SSN to format.</param>
+	<returns>Formatted SSN.</returns>
+</member><member name="M:Utility.clsFormatting.IsSSN(System.String)">
+	<summary>Verify that a string is formattable to an SSN.</summary>
+	<param name="SSN">Phone number to verify.</param>
+	<returns>True if the string is a 9 digit number.</returns>
+</member><member name="M:Utility.clsFormatting.AssemblePhone(System.String,System.String,System.String)">
+	<summary>Create a phone number string from component parts.</summary>
+	<param name="ph1">Area code.</param>
+	<param name="ph2">Exchange.</param>
+	<param name="ph3">Number.</param>
+	<returns>Formatted phone number.</returns>
+</member><member name="M:Utility.clsFormatting.IsAddressSame(System.String,System.String)">
+	<summary>Check if two street addresses match.</summary>
+	<param name="addr1">The first street address.</param>
+	<param name="addr2">The second street address.</param>
+	<remarks>Should be street address only, without city, state, and zip.</remarks>
+	<returns>True if the addresses are the same.</returns>
+</member><member name="M:Utility.clsFormatting.ToZip(System.String)">
+	<summary>Convert a Zip Code to standard format.</summary>
+	<param name="zip">Zip to format.</param>
+	<remarks>Handles Zip+4 format.</remarks>
+	<returns>Formatted zip code.</returns>
+</member><member name="M:Utility.clsFormatting.IsZip(System.String)">
+	<summary>Validates a Zip Code to standard format.</summary>
+	<param name="zip">Zip to validate.</param>
+	<remarks>Validates that the code can be formatted as a zip code. Use ToZip to ensure proper formatting.</remarks>
+	<returns>True if valid (zip has 5 or 9 numeric characters with an optional hyphen).</returns>
+</member><member name="M:Utility.clsFormatting.ToPhone(System.String)">
+	<summary>Convert a phone number to standard format.</summary>
+	<param name="Phone">Phone number to format.</param>
+	<returns>Formatted phone Number.</returns>
+</member><member name="M:Utility.clsFormatting.IsPhone(System.String,System.Boolean)">
+	<summary>Verify that a string is formattable to a 10 digit phone number.</summary>
+	<param name="Phone">Phone number to verify.</param>
+	<returns>True if the string is a 10 digit number.</returns>
+</member><member name="M:Utility.clsFormatting.ToNumericCharsOnly(System.String,System.Boolean,System.Boolean)">
+	<summary>Strips a string of any non-numeric characters.</summary>
+	<param name="Text">Text string to format.</param>
+	<returns>Stripped text string.</returns>
+</member><member name="M:Utility.clsFormatting.StripWhiteSpace(System.Object)">
+	<summary>Strips a string of any white space.</summary>
+	<param name="Text">Text string to format.</param>
+	<returns>Stripped text string.</returns>
+</member><member name="M:Utility.clsFormatting.ToDecimalPlaces(System.Object,System.Int32)">
+	<summary>Truncates the decimal places.</summary>
+	<param name="Number">Number object to format.</param>
+	<returns>A number string.</returns>
+</member><member name="M:Utility.clsFormatting.ToAddress(System.String,System.String,System.String,System.String,System.String)">
+	<summary>Create an address string from component parts.</summary>
+	<param name="ad1">Address Line 1.</param>
+	<param name="ad2">Address Line 2.</param>
+	<param name="city">City.</param>
+	<param name="state">State abbreviation.</param>
+	<param name="zip">Zip Code.</param>
+	<returns>A formatted address.</returns>
+</member><member name="M:Utility.clsFormatting.ToFullName(System.String,System.String,System.String,System.String)">
+	<summary>Create a full name string from component parts.</summary>
+	<param name="FirstName">First Name.</param>
+	<param name="MiddleName">Middle Name.</param>
+	<param name="LastName">Last Name.</param>
+	<returns>A full name string.</returns>
+</member><member name="M:Utility.clsFormatting.ToMhsDate(System.DateTime)">
+	<summary>Convert a date to MHS format.</summary>
+	<param name="d">The DateTime to convert.</param>
+	<remarks>If not provided, d defaults to Now.</remarks>
+	<returns>An MHS format date.</returns>
+</member><member name="M:Utility.clsFormatting.ToTime(System.String)">
+	<summary>Make sure a time string is formatted properly.</summary>
+	<param name="TimeString">The time string to convert.</param>
+	<returns>A properly formatted time string.</returns>
+</member><member name="M:Utility.clsFormatting.ToStdTime(System.String)">
+	<summary>Convert a military time to standard am/pm format.</summary>
+	<param name="MilitaryTime">The miltiary time string to convert.</param>
+	<returns>A properly formatted standard time string.</returns>
+</member><member name="M:Utility.clsFormatting.ToGender(System.String)">
+	<summary>Return the friendly form for a gender abbreviation.</summary>
+	<param name="sText">The gender abbreviation to convert.</param>
+	<returns>The full gender description string.</returns>
+</member><member name="M:Utility.clsFormatting.ZipFromAddr(System.String)">
+	<summary>Extract a zip code from an address.</summary>
+	<param name="AddrString">The address string containing a zip code.</param>
+	<returns>The parsed zip code, if any.</returns>
+</member><member name="M:Utility.clsFormatting.Quote(System.String)">
+	<summary>Put double quotes around a string.</summary>
+	<param name="strText">String to quote.</param>
+</member><member name="M:Utility.clsFormatting.Scramble(System.String)">
+	<summary>Scramble characters to protect the text.</summary>
+	<param name="RawText">String to scramble.</param>
+</member><member name="M:Utility.clsFormatting.AppendIfNeeded(System.String,System.String)">
+	<summary>Append a string with another string if it is not already there.</summary>
+	<param name="sText">The text string to be appended.</param>
+	<param name="sAppend">The text string to append.</param>
+	<remarks>Comparison is case insensitive.</remarks>
+	<example>sConn = AppendIfNeeded(sConn, ";")</example>
+</member><member name="M:Utility.clsFormatting.ReplaceFirst(System.String,System.String,System.String)">
+	<summary>Replace the first occurrence only of a substring.</summary>
+	<param name="sText">The text string to be appended.</param>
+	<param name="sSearch">The text string to search for.</param>
+	<param name="sReplace">The text string to replace it with.</param>
+	<remarks>If sSearch is not found, returns original string.</remarks>
+</member><member name="M:Utility.clsFormatting.ToTitle(System.String)">
+	<summary>Convert a string to Title Case.</summary>
+	<param name="sText">The text to convert.</param>
+</member><member name="M:Utility.clsFormatting.ToCurrency(System.String)">
+	<summary>Convert a string to currency.</summary>
+	<param name="sText">The text to convert.</param>
+</member><member name="M:Utility.clsFormatting.ToPercent(System.String)">
+	<summary>Convert a string to percent.</summary>
+	<param name="sText">The text to convert.</param>
+</member><member name="M:Utility.clsFormatting.Compress(System.String)">
+	<summary>Compress a string.</summary>
+	<param name="OriginalText">The text to compress.</param>
+	<returns>The compressed string.</returns>
+	<remarks>Might increase the length of very short strings.</remarks>
+	<seealso cref="M:Utility.clsFormatting.Decompress(System.String)"/>
+</member><member name="M:Utility.clsFormatting.Decompress(System.String)">
+	<summary>Decompress a string.</summary>
+	<param name="CompressedText">The compressed text string to decompress.</param>
+	<returns>The uncompressed string.</returns>
+	<seealso cref="M:Utility.clsFormatting.Compress(System.String)"/>
+</member><member name="M:Utility.clsFormatting.GetAttribute(System.Xml.XmlNode,System.String,System.Object)">
+	<summary>Get a node attribute.</summary>
+	<param name="n">The XML Node containing the attribute.</param>
+	<param name="Attribute">The name of the attribute to get.</param>
+	<param name="DefaultValue">An optional default value if no attribute is found.</param>
+	<returns>The value of the specified attribute.</returns>
+</member><member name="M:Utility.clsFormatting.SetAttribute(System.Xml.XmlNode,System.String,System.String)">
+	<summary>Set a node attribute.</summary>
+	<param name="n">The XML Node containing the attribute.</param>
+	<param name="Attribute">The name of the attribute to set.</param>
+	<param name="Value">The value of the attribute to set.</param>
+</member><member name="M:Utility.clsFormatting.ApplyXSLT(System.String,System.String)">
+	<summary>Apply an XSLT transform string to an HTML/XML string.</summary>
+	<param name="document">The XML or HTML document to transform.</param>
+	<param name="stylesheet">The XSLT stylesheet to apply.</param>
+	<returns>The transformed document.</returns>
+</member><member name="M:Utility.clsFormatting.Factorial(System.Int32)">
+	<summary>Return the factorial of a given number.</summary>
+	<param name="n">The number to compute.</param>
+	<returns>The factorial of n.</returns>
+</member><member name="M:Utility.clsFormatting.IsSquare(System.Double)">
+	<summary>Determines if a number is a square of an integer value.</summary>
+	<param name="PossibleSquare">The number to check.</param>
+	<returns>True if the value provided has an integer square root.</returns>
+</member><member name="M:Utility.clsFormatting.Encrypter.Encrypt(System.String)">
+	<summary>Encrypt a string.</summary>
+	<returns>An encrypted byte array.</returns>
+	<seealso cref="M:Utility.clsFormatting.Encrypter.Decrypt(System.Byte[])"/>
+</member><member name="M:Utility.clsFormatting.Encrypter.Decrypt(System.Byte[])">
+	<summary>Decrypt a byte array.</summary>
+	<returns>An unencrypted string.</returns>
+	<seealso cref="M:Utility.clsFormatting.Encrypter.Encrypt(System.String)"/>
+</member><member name="T:Utility.clsFormatting.Encrypter">
+	<summary>Encrypt or Unencrypt a text string.</summary>
+	<example>
+ Dim enc As New clsFormatting.Encrypter("this is the optional encryption key")
+ Dim b() As Byte = enc.Encrypt("Please encrypt this important secret message.")
+ Dim s As Object = enc.Decrypt(b) 'Returns Nothing if there is an error
+ Console.WriteLine(s.ToString)
+ </example>
+</member><member name="M:Utility.clsFormatting.AddToSortedCounterList(System.Collections.SortedList,System.Object)">
+	<summary>Creates a sorted list of unique values with counts.</summary>
+	<param name="list">A SortedList to which to add a new value.</param>
+	<param name="key">The value of the list item.</param>
+	<remarks>The value passed will be the key and the value will hold the count.</remarks>
+</member><member name="M:Utility.clsFormatting.GetPermutations(System.String)">
+	<summary>Return a collection of string permutations keys with duplicate count values.</summary>
+	<param name="input">The string to be processed</param>
+	<returns>A SortedList of all unique key values along with their counts</returns>
+</member><member name="M:Utility.clsFormatting.IsInString(System.String,System.String,System.String)">
+	<summary>Determines if a string is included in a delimted string.</summary>
+	<param name="DelimitedString">The delimited string to search.</param>
+	<param name="Delimiter">The string delimiter.</param>
+	<param name="SearchString">The string to search for.</param>
+	<returns>True if the string is found.</returns>
+</member><member name="M:Utility.clsFormatting.IsInArray(System.String[],System.String)">
+	<summary>Determines if a string is included in a string array.</summary>
+	<param name="StringArray">The string array to search.</param>
+	<param name="SearchString">The string to search for.</param>
+	<returns>True if the string is found.</returns>
+</member><member name="M:Utility.clsFormatting.IsInStringNumeric(System.String,System.String,System.String)">
+	<summary>Determines if a number is included in a delimted string.</summary>
+	<param name="DelimitedString">The delimited string to search.</param>
+	<param name="Delimiter">The string delimiter.</param>
+	<param name="SearchString">The number to search for.</param>
+	<returns>True if the number is found.</returns>
+</member><member name="M:Utility.clsFormatting.IsInArrayNumeric(System.String[],System.String)">
+	<summary>Determines if a number is included in a string array.</summary>
+	<param name="StringArray">The string array to search.</param>
+	<param name="SearchString">The number to search for.</param>
+	<returns>True if the number is found.</returns>
+</member><member name="M:Utility.clsFormatting.DocumentVB(System.String)">
+	<summary>Parses a VB file and returns a string of all public functions with their XML descriptions.</summary>
+	<param name="filename">The VB source code file to parse.</param>
+	<returns>A formatted string.</returns>
+</member><member name="T:Utility.clsFormatting">
+	<summary>General library for formatting and parsing routines.</summary>
+</member><member name="T:Utility.frmAbout">
+	<summary>
+ A generic about box. Displayed information is taken from the project assembly information settings.
+ </summary>
+</member><member name="M:Utility.clsUserInterface.MakeControlsEditable(System.Windows.Forms.Control,System.Boolean)">
+	<summary>Loops through all child controls to set their editability.</summary>
+</member><member name="M:Utility.clsUserInterface.GetControlString(System.Windows.Forms.Control)">
+	<summary>Loops through all child controls and returns a string of current values.</summary>
+</member><member name="M:Utility.clsUserInterface.SelectFromList(System.Data.DataTable,System.String,System.String,System.String,System.String)">
+	<summary>Displays a general dialog for selecting a value from a list.</summary>
+	<remarks>Returns the first field in the datatable provided.</remarks>
+</member><member name="M:Utility.clsUserInterface.ShowAbout">
+	<summary>Displays a general login form for SQL Server and MHS.</summary>
+	<remarks>Updates the connection string in Utility.</remarks>
+</member><member name="M:Utility.clsUserInterface.MenuAddRecent(System.Windows.Forms.ToolStripMenuItem,System.String,System.String)">
+	<summary>Add an item to the recent menu list.</summary>
+	<param name="mnuParent">The parent menu item.</param>
+	<param name="Display">The menu text to dispaly.</param>
+	<param name="Tag">Key for comparison of menu items.</param>
+	<remarks>To configure, add the number of child items you want as place holders and make them invisible initially.</remarks>
+</member><member name="M:Utility.clsUserInterface.ListSearch(System.Object,System.String,System.Boolean)">
+	<summary>Find a value in a list or combo box.</summary>
+	<param name="lst">The list or combo box to search.</param>
+	<param name="strText">The text to find.</param>
+	<remarks>More friendly than the built in .Net method.</remarks>
+	<returns>The index of the found item or -1.</returns>
+</member><member name="M:Utility.clsUserInterface.OpenFile(System.String)">
+	<summary>Execute or open a file.</summary>
+	<param name="FileName">Full path and file name for file to open.</param>
+	<remarks>Files will open in the default Windows application associated with them.</remarks>
+</member><member name="M:Utility.clsUserInterface.ShowInBrowser(System.String,System.String)">
+	<summary>Show an HTML string in the default browser.</summary>
+	<param name="PageName">The file name to create and pass to browser.</param>
+	<param name="sHTML">The HTML string (can be plain text also).</param>
+	<remarks>Will write the file in the current directory.</remarks>
+</member><member name="M:Utility.clsUserInterface.GetDateRange(System.DateTime@,System.DateTime@,System.String)">
+	<summary>
+ Prompts the user for a date or optional date range.
+ </summary>
+	<param name="DateFrom">The starting date, pass Nothing for no starting date.</param>
+	<param name="DateTo">The ending date, pass Nothing for no ending date</param>
+	<param name="Title">Optional title of the date entry form.</param>
+	<returns>True if user has enter a valid date or date range.</returns>
+	<remarks>Start and end date are returned in the parameters passed by reference.</remarks>
+</member><member name="T:Utility.clsUserInterface">
+	<summary>General library for User Interface routines.</summary>
+</member><member name="M:Utility.clsMapping.GetDistance(System.String,System.String)">
+	<summary>Get the distance between two locations.</summary>
+	<param name="FromLoc">Starting location, address and/or zip code.</param>
+	<param name="ToLoc">Ending location, address and/or zip code.</param>
+	<returns>Distance in miles.</returns>
+</member><member name="M:Utility.clsMapping.ShowMap(System.String,System.Int32)">
+	<summary>Display Google map location in the browser.</summary>
+	<param name="Location">Location to display.</param>
+</member><member name="M:Utility.clsMapping.ShowDirections(System.String,System.String)">
+	<summary>Display Google map directions in the browser.</summary>
+	<param name="FromLoc">Starting location.</param>
+	<param name="ToLoc">Ending location..</param>
+</member><member name="M:Utility.clsMapping.GetLadLon(System.String,System.String@,System.String@)">
+	<summary>Return the latitude and longitude for a given location.</summary>
+	<param name="Location">Starting location, an address and/or zip code.</param>
+	<param name="Latitude">Returned Latitude.</param>
+	<param name="Longitude">Returned Longitude.</param>
+	<returns>Number of results found.</returns>
+	<remarks>Results should only be considered reliable only if exactly 1 is returned.</remarks>
+</member><member name="M:Utility.clsMapping.GetStandardAddress(System.String)">
+	<summary>Returns an address in standardized format.</summary>
+	<param name="Address">The address to standardize.</param>
+	<returns>The standardized address.</returns>
+</member><member name="M:Utility.clsMapping.CalcDistance(System.Double,System.Double,System.Double,System.Double)">
+	<summary>Calculate the distance between two sets of geo-coordinates.</summary>
+	<param name="lat1">Latitude for the first location.</param>
+	<param name="lon1">Longitude for the first location.</param>
+	<param name="lat2">Latitude for the second location.</param>
+	<param name="lon2">Longitude for the second location.</param>
+	<returns>The direct distance between the two coordinates.</returns>
+</member><member name="T:Utility.clsMapping">
+	<summary>General library for mapping routines.</summary>
+</member><member name="P:Utility.LogMonitor.IsStarted">
+	<summary>Flags whether logging has started.</summary>
+</member><member name="P:Utility.LogMonitor.IsRunning">
+	<summary>Flags whether logging is currently running.</summary>
+</member><member name="E:Utility.LogMonitor.LogUpdated">
+	<summary>Monitors a text file for changes.</summary>
+</member><member name="M:Utility.LogMonitor.#ctor(System.String,System.Int32)">
+	<summary>Initializes a new LogMonitor class.</summary>
+	<param name="LogFile">The full path of the file to monitor.</param>
+	<param name="MonitorMS">The monitoring rate in milliseconds of delay.</param>
+</member><member name="M:Utility.LogMonitor.StartLogging">
+	<summary>Starts logging of the file.</summary>
+</member><member name="M:Utility.LogMonitor.PauseLogging">
+	<summary>Pauses logging of the file.</summary>
+</member><member name="M:Utility.LogMonitor.ContinueLogging">
+	<summary>Continues logging after a pause.</summary>
+</member><member name="M:Utility.LogMonitor.StopLogging">
+	<summary>Stops logging.</summary>
+</member><member name="T:Utility.LogMonitor">
+	<summary>Monitors a text file for changes.</summary>
+</member><member name="F:Utility.Routines.db">
+	<summary>Database Library.</summary>
+</member><member name="F:Utility.Routines.ui">
+	<summary>User Interface Library.</summary>
+</member><member name="F:Utility.Routines.fmt">
+	<summary>Formatting Library.</summary>
+</member><member name="F:Utility.Routines.map">
+	<summary>Mapping Library.</summary>
+</member><member name="F:Utility.Routines.nwk">
+	<summary>Networking Library.</summary>
+</member><member name="T:Utility.Routines.UserInfoStruct">
+	<summary>A structure to store information about the current user.</summary>
+	<remarks>See UserInfo</remarks>
+</member><member name="F:Utility.Routines.UserInfo">
+	<summary>Store information about the current user.</summary>
+	<remarks>Call SetUsereInfo to populate.</remarks>
+</member><member name="M:Utility.Routines.SetUserInfo(Utility.clsDataQuery)">
+	<summary>Populates Utililty.UserInfo with details about the current Windows User.</summary>
+</member><member name="F:Utility.Routines.LastPing">
+	<summary>Allow the calling application to store it's last ping time here for error reporting,</summary>
+</member><member name="F:Utility.Routines.LogThreshold">
+	<summary>The query reporting threshold in milliseconds, defaults to 5000.</summary>
+</member><member name="F:Utility.Routines.LogPath">
+	<summary>The query logging path. If empty or invalid then no logging.</summary>
+</member><member name="F:Utility.Routines.LogConnection">
+	<summary>The event logging path. If empty or invalid then no logging.</summary>
+</member><member name="M:Utility.Routines.ReportError(System.Exception,System.Boolean,System.String)">
+	<summary>Show and optionally mail error information.</summary>
+	<param name="exRep">The exception object to report.</param>
+	<param name="Fatal">Set to False to suppress exiting application after error.</param>
+	<remarks>Mail specifications are taken from My.Settings.</remarks>
+</member><member name="M:Utility.Routines.EventLogSave(System.String,System.String,System.DateTime,System.DateTime,System.String,System.String)">
+	<summary>Save event to database.</summary>
+	<param name="EventName">Name of the event to log.</param>
+	<param name="EventDesc">Optional description of the event.</param>
+	<param name="StartTime">Optional start time of event, defaults to Now.</param>
+	<param name="EndTime">Optional end time of event, defaults to Nothing.</param>
+	<param name="UserName">Optional User Name associated with the event, defaults to current user.</param>
+	<param name="AppName">Optional Application Name associated with the event, defaults to current user.</param>
+	<remarks>Note you must have an AppShareCon key in the Connections collection to use this method.</remarks>
+</member><member name="M:Utility.Routines.ReleaseObj(System.Object@)">
+	<summary>Free a disposable object for garbage collection.</summary>
+	<param name="obj">The disposable object to release.</param>
+	<remarks>Call when finished with any object that implements IDisposable.</remarks>
+</member><member name="T:Utility.Routines">
+	<summary>General reusable utility module.</summary>
+</member><member name="P:Utility.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Utility.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Utility.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="F:Utility.clsDataQuery.QueryHistory">
+	<summary>Contains a history of recent queries</summary>
+</member><member name="F:Utility.clsDataQuery.HistoryLock">
+	<summary>Used to lock the QueryHistory during updates</summary>
+</member><member name="F:Utility.clsDataQuery.QueryHistoryMax">
+	<summary>The maximum number of QueryHistory records to retain</summary>
+</member><member name="F:Utility.clsDataQuery.EnableParameterization">
+	<summary>Flag to disable parameterization
+ We have encountered SQL Server bugs where indices get misapplied with parameters are used
+ Dynamic queries do not suffer from this issue.</summary>
+</member><member name="F:Utility.clsDataQuery.EnableTranslateMHStoSQL">
+	<summary>Enable translation of iSeries to SQL syntax</summary>
+</member><member name="F:Utility.clsDataQuery.Tag">
+	<summary>A Tag property to identify the DataQuery</summary>
+</member><member name="F:Utility.clsDataQuery.ProviderType">
+	<summary>The provider type, defaults to SQL Server</summary>
+</member><member name="F:Utility.clsDataQuery.ConnectionString">
+	<summary>The connection string used for all queries</summary>
+</member><member name="F:Utility.clsDataQuery.sqlTemplate">
+	<summary>The sql statement prior to perparation</summary>
+</member><member name="F:Utility.clsDataQuery.Timeout">
+	<summary>The query timeout in seconds, defaults to 15</summary>
+</member><member name="F:Utility.clsDataQuery.ParamCol">
+	<summary>A collection of query paramters</summary>
+</member><member name="F:Utility.clsDataQuery.sw">
+	<summary>Stopwatch used to time the queries</summary>
+</member><member name="F:Utility.clsDataQuery.objCon">
+	<summary>The database connection object</summary>
+</member><member name="F:Utility.clsDataQuery.objTrans">
+	<summary>The database transaction object</summary>
+</member><member name="F:Utility.clsDataQuery.CurProv">
+	<summary>The current provider</summary>
+</member><member name="F:Utility.clsDataQuery.CurDB">
+	<summary>The current database</summary>
+</member><member name="T:Utility.clsDataQuery.ProviderTypes">
+	<summary>Supported database provider types</summary>
+</member><member name="T:Utility.clsDataQuery.QueryTypes">
+	<summary>Supported query types</summary>
+</member><member name="P:Utility.clsDataQuery.sqlComplete">
+	<summary>Return an executable sql statement with any parameter values substituted</summary>
+</member><member name="P:Utility.clsDataQuery.LastQueryTime">
+	<summary>Returns the timespan of the last query in milliseconds</summary>
+</member><member name="P:Utility.clsDataQuery.LastQueryValue">
+	<summary>Returns the last value returned from GetValue</summary>
+</member><member name="P:Utility.clsDataQuery.LastQueryIdentity">
+	<summary>The last Identity returned from GetIdentity</summary>
+</member><member name="P:Utility.clsDataQuery.LastQueryTable">
+	<summary>The last datatable returned from GetTable</summary>
+</member><member name="P:Utility.clsDataQuery.LastQueryType">
+	<summary>The current provider type, defaults to SQL Server</summary>
+</member><member name="M:Utility.clsDataQuery.#ctor(System.String,Utility.clsDataQuery.ProviderTypes,System.String,System.String,System.Boolean,System.Boolean,System.Int32)">
+	<summary>Instantiate a new DataQuery object</summary>
+	<param name="Connection">The connection string</param>
+</member><member name="M:Utility.clsDataQuery.Execute(System.String)">
+	<summary>Execute an action query</summary>
+	<param name="sql">The sql action query to execute</param>
+	<returns>The count of records affected</returns>
+</member><member name="M:Utility.clsDataQuery.Execute">
+	<summary>Execute an action query</summary>
+	<returns>The count of records affected</returns>
+</member><member name="M:Utility.clsDataQuery.GetValue(System.String)">
+	<summary>Return a single value</summary>
+	<param name="sql">The sql string to return</param>
+	<returns>Returns the first row and field in the resultset</returns>
+</member><member name="M:Utility.clsDataQuery.GetValue">
+	<summary>Return a single value</summary>
+	<returns>Returns the first row and field in the resultset</returns>
+</member><member name="M:Utility.clsDataQuery.GetIdentity(System.String)">
+	<summary>Return an Identity value from SQL Server</summary>
+	<param name="sql">The sql string to insert or update</param>
+	<returns>Returns the row Identity after an Insert or Update</returns>
+	<remarks>SQL Server Only</remarks>
+</member><member name="M:Utility.clsDataQuery.GetIdentity">
+	<summary>Return an Identity value from SQL Server</summary>
+	<returns>Returns the row Identity after an Insert or Update</returns>
+	<remarks>SQL Server Only</remarks>
+</member><member name="M:Utility.clsDataQuery.GetValueInternal(System.Boolean)">
+	<summary>Return a data value</summary>
+	<param name="GetSQLIdentity">Set to True to return the new Identity of an Insert action for SQL Server providers</param>
+	<returns>Returns the first row and field returned or the row Identity</returns>
+</member><member name="M:Utility.clsDataQuery.GetTable(System.String,System.String,System.Boolean)">
+	<summary>Return a data table (with schema mapping)</summary>
+	<returns>A datatable</returns>
+	<param name="TableName">The name to assign to the returned datatable</param>
+	<param name="sql">The sql string to return</param>
+	<param name="IncludeSchema">Set to False if you do not wish to return the table schema mapping</param>
+</member><member name="M:Utility.clsDataQuery.GetTable">
+	<summary>Return a data table (with schema mapping)</summary>
+	<returns>A datatable</returns>
+	<remarks>Table is given the name specified in the Tag property if a string</remarks>
+</member><member name="M:Utility.clsDataQuery.GetTableNoSchema">
+	<summary>Return a data table (without schema mapping)</summary>
+	<returns>A datatable</returns>
+	<remarks>Table is given the name specified in the Tag property if a string</remarks>
+</member><member name="M:Utility.clsDataQuery.GetTableInternal(System.Boolean)">
+	<summary>Return a datatable</summary>
+	<remarks>Table is given the name specified in the Tag property if a string</remarks>
+</member><member name="M:Utility.clsDataQuery.IsConnectionValid">
+	<summary>Verify the connection can be opened.</summary>
+	<returns>OK or an error message.</returns>
+</member><member name="M:Utility.clsDataQuery.GetCurrentProvider">
+	<summary>Get default provider for current connection string.</summary>
+	<returns>The provider name.</returns>
+</member><member name="M:Utility.clsDataQuery.GetCurrentDatabase">
+	<summary>Get default database for current connection string.</summary>
+	<returns>The database name.</returns>
+</member><member name="M:Utility.clsDataQuery.Finalize">
+	<summary>Clean up an objects</summary>
+</member><member name="M:Utility.clsDataQuery.ParamSet(System.String,System.Object,System.Boolean)">
+	<summary>Create or assign a new parameter value</summary>
+	<param name="Name">The name of the parameter to add, e.g. @ID</param>
+	<param name="Value">The value of the specified parameter</param>
+</member><member name="M:Utility.clsDataQuery.ParamsClear">
+	<summary>Clear any defined parameters</summary>
+</member><member name="M:Utility.clsDataQuery.GetStandardSize(System.Int32)">
+	<summary>Get a standard string size so that string parameters will hit the cache properly</summary>
+</member><member name="F:Utility.clsDataQuery.IsTransactional">
+	<summary>True if a transaction is currently in progress</summary>
+</member><member name="M:Utility.clsDataQuery.TransactionBegin">
+	<summary>Initiate a new transaction</summary>
+	<remarks>Applies to Execute, GetValue, and GetIdentity methods</remarks>
+</member><member name="M:Utility.clsDataQuery.TransactionRollback">
+	<summary>Abort the current transaction</summary>
+</member><member name="M:Utility.clsDataQuery.TransactionCommit">
+	<summary>Commit the current transaction</summary>
+</member><member name="M:Utility.clsDataQuery.ExecuteAsync">
+	<summary>Execute an action query asynchronously</summary>
+	<remarks>Implement the Finished event if you wish to be notified of completion</remarks>
+</member><member name="M:Utility.clsDataQuery.GetValueAsync">
+	<summary>Execute a GetValue query asynchronously and populate LastQueryValue with the result</summary>
+	<remarks>Implement the Finished event if you wish to be notified of completion</remarks>
+</member><member name="M:Utility.clsDataQuery.GetIdentityAsync">
+	<summary>Execute a GetIdentity query asynchronously and populate LastQueryIdentity with the result</summary>
+	<remarks>Implement the Finished event if you wish to be notified of completion</remarks>
+</member><member name="M:Utility.clsDataQuery.GetTableAsync">
+	<summary>Execute a GetTable query asynchronously and populate LastQueryTable with the result</summary>
+	<remarks>Implement the Finished event if you wish to be notified of completion</remarks>
+</member><member name="M:Utility.clsDataQuery.GetTableNoSchemaAsync">
+	<summary>Execute a GetTableNoSchema query asynchronously and populate LastQueryTable with the result</summary>
+	<remarks>Implement the Finished event if you wish to be notified of completion</remarks>
+</member><member name="M:Utility.clsDataQuery.LogQueryStart(System.String)">
+	<summary>Log the query to the database.</summary>
+	<remarks>Note you must set the LogConnection connection to enable logging to the ApplicationShare database.</remarks>
+</member><member name="M:Utility.clsDataQuery.LogQueryEnd(System.Int32)">
+	<summary>Update the query log with the elapsed query time.</summary>
+</member><member name="T:Utility.clsDataQuery">
+	<summary>
+ Database Query Class
+ Features:
+ SQL Server, ODBC, and OLEDB Provider Types
+ Execute, GetValue, GetIdentity, and GetTable Query Types
+ All methods support Ad Hoc, Parameterized, and Stored Procedure calls
+ GetTable Queries with or without Schema Mapping
+ Synchronous or Asynchronous with Notification Event
+ Returns formatted sql for debugging parameterized queries
+ Sequential Transaction Support (not simultaneous)
+ Configurable Timeout
+ Automatic timing of all queries
+ Logs recent query history internally
+ Optional query logging to database
+ </summary>
+</member>
+</members>
+</doc>

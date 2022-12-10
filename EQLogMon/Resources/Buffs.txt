@@ -1,0 +1,7 @@
+Auspice, begins casting Auspice of the Hunter ,Raid,48
+CoP, begins casting Circle of Power ,Raid,120
+CoP, begin casting Circle of Power ,Raid,120
+GC, begins casting Guardian Circle ,Raid,120
+GC, begin casting Guardian Circle ,Raid,120
+Sham Epic, begins casting Prophet's Gift of the Ruchu.,Group,60
+Bard Epic, begins casting Spirit of Vesagran.,Group,60
