@@ -22,6 +22,7 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.pg = New ProGrid.ProGrid()
         Me.ss = New System.Windows.Forms.StatusStrip()
         Me.ssNonMelee = New System.Windows.Forms.ToolStripStatusLabel()
@@ -60,6 +61,7 @@ Partial Class frmMain
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.lblTop = New System.Windows.Forms.Label()
         Me.lblSearch = New System.Windows.Forms.Label()
+        Me.tmrFlash = New System.Windows.Forms.Timer(Me.components)
         Me.ss.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.splitMain, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,7 +112,7 @@ Partial Class frmMain
         '
         'ss
         '
-        Me.ss.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ssNonMelee, Me.ssPets, Me.ssServerLog, Me.ssLogFile, Me.ssStatus})
+        Me.ss.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ssNonMelee, Me.ssPets, Me.ssLogFile, Me.ssServerLog, Me.ssStatus})
         Me.ss.Location = New System.Drawing.Point(0, 417)
         Me.ss.Name = "ss"
         Me.ss.ShowItemToolTips = True
@@ -136,17 +138,17 @@ Partial Class frmMain
         '
         'ssServerLog
         '
-        Me.ssServerLog.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right
         Me.ssServerLog.Name = "ssServerLog"
-        Me.ssServerLog.Size = New System.Drawing.Size(110, 19)
+        Me.ssServerLog.Size = New System.Drawing.Size(106, 19)
         Me.ssServerLog.Text = "Server Logging Off"
         Me.ssServerLog.ToolTipText = "Realtime transfer to database using current log file (click to toggle)"
         '
         'ssLogFile
         '
         Me.ssLogFile.AutoToolTip = True
+        Me.ssLogFile.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right
         Me.ssLogFile.Name = "ssLogFile"
-        Me.ssLogFile.Size = New System.Drawing.Size(67, 19)
+        Me.ssLogFile.Size = New System.Drawing.Size(71, 19)
         Me.ssLogFile.Text = "No Log File"
         Me.ssLogFile.ToolTipText = "Log File (click to selec)"
         '
@@ -399,6 +401,10 @@ Partial Class frmMain
         Me.lblSearch.Text = "Search"
         Me.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'tmrFlash
+        '
+        Me.tmrFlash.Interval = 400
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -465,4 +471,5 @@ Partial Class frmMain
     Friend WithEvents ssPets As ToolStripStatusLabel
     Friend WithEvents mnuFAQ As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem5 As ToolStripSeparator
+    Friend WithEvents tmrFlash As Timer
 End Class

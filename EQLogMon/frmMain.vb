@@ -1096,7 +1096,7 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuAbout_Click(sender As Object, e As EventArgs) Handles mnuAbout.Click
-        MessageBox.Show("Written by Sayanara of Mangler.", "EQ Log Analyzer", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        frmAbout.ShowDialog(Me)
     End Sub
 
     Private Sub DoConfigure() Handles mnuOptions.Click
@@ -1158,7 +1158,6 @@ Public Class frmMain
 
 #End Region
 
-
 #Region "Realtime Log Parsing"
 
     ' Real time logging
@@ -1201,8 +1200,7 @@ Public Class frmMain
         ssServerLog.ForeColor = Color.Red
         ssServerLog.Text = "Server Logging On"
         Application.DoEvents()
-        ssServerLog.ForeColor = Color.Red
-        ssServerLog.Text = "Server Logging On"
+        tmrFlash.Enabled = True
 
         ' Kick off a background worker to handle parsing
         monWorker.WorkerReportsProgress = False
@@ -1214,11 +1212,12 @@ Public Class frmMain
 
     Private Sub ServerLogStop()
         Logging = False
+        tmrFlash.Enabled = False
         Do
             Application.DoEvents()
         Loop While monWorker.IsBusy
         mnuToggleLogging.Checked = False
-        ssServerLog.ForeColor = Color.Black
+        ssServerLog.ForeColor = SystemColors.ControlText
         ssServerLog.Text = "Server Logging Off"
     End Sub
 
@@ -1294,11 +1293,17 @@ QuitLogging:
     End Sub
 
     Private Sub BatchSubmit()
+
+        ' Flash the indicator to show activity
+        TimerFlash = True
+
+        ' Submit the batch
         monCmd.CommandText = monCurBatch
         monCmd.ExecuteNonQuery()
         monCurBatch = ""
         monCurSize = 0
         monSW.Reset()
+
     End Sub
 
     Private Sub mnuUploadLogFile_Click(sender As Object, e As EventArgs)
@@ -1456,6 +1461,18 @@ QuitLogging:
         Finally
             Cursor = Cursors.Default
         End Try
+    End Sub
+
+    Dim TimerFlash As Boolean = False
+    Private Sub tmrFlash_Tick(sender As Object, e As EventArgs) Handles tmrFlash.Tick
+        If TimerFlash Then
+            ssServerLog.Text = "Sending..."
+            TimerFlash = False
+        Else
+            ssServerLog.Text = "Server Logging On"
+        End If
+        ss.Refresh()
+        Application.DoEvents()
     End Sub
 
 #End Region
